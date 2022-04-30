@@ -30,4 +30,8 @@
 
         </tbody>
     </table>
+
+    <div>
+        {{ $manures->links() }}
+    </div>
 @endsection
