@@ -6,7 +6,7 @@ use App\Http\Controllers;
 use App\Models\Culture;
 use App\Models\Manure;
 
-class EditController extends Controllers\Controller
+class EditController extends BaseController
 {
     public function __invoke(Manure $manure)
     {

@@ -3,24 +3,18 @@
 namespace App\Http\Controllers\Admin\Manure;
 
 use App\Http\Controllers;
+use App\Http\Requests\Admin\Manure\UpdateRequest;
 use App\Models\Manure;
 
-class UpdateController extends Controllers\Controller
+class UpdateController extends BaseController
 {
-    public function __invoke(Manure $manure)
+    public function __invoke(UpdateRequest $request, Manure $manure)
     {
-        $data = request()->validate([
-            'name' => 'string',
-            'norm_nitrogen' => 'numeric|between:0,99.99',
-            'norm_phosphorus' => 'numeric|between:0,99.99',
-            'norm_potassium' => 'numeric|between:0,99.99',
-            'district' => '',
-            'price' => '',
-            'description' => '',
-            'purpose' => '',
-            'culture_id' => ''
-        ]);
-        $manure->update($data);
+        $data = $request->validated();
+
+        $this->service->update($manure, $data);
+
+
         return redirect()->route('admin.manure.show', $manure->id);
     }
 }

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Manure;
 use App\Http\Controllers;
 use App\Models\Culture;
 
-class CreateController extends Controllers\Controller
+class CreateController extends BaseController
 {
     public function __invoke()
     {

@@ -3,24 +3,19 @@
 namespace App\Http\Controllers\Admin\Manure;
 
 use App\Http\Controllers;
+use App\Http\Requests\Admin\Manure\StoreRequest;
 use App\Models\Manure;
 
-class StoreController extends Controllers\Controller
+class StoreController extends BaseController
 {
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        $data = request()->validate([
-            'name' => 'required|string',
-            'norm_nitrogen' => 'required|numeric',
-            'norm_phosphorus' => 'required|numeric',
-            'norm_potassium' => 'required|numeric',
-            'district' => 'required|string',
-            'price' => 'required|string',
-            'description' => 'required|string',
-            'purpose' => 'required|string',
-            'culture_id' => ''
-        ]);
-        Manure::create($data);
+        $data = $request->validated();
+
+        $this->service->store($data);
+
+
+
         return redirect()->route('admin.manure.index');
     }
 }

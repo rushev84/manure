@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin\Manure;
 use App\Http\Controllers;
 use App\Models\Manure;
 
-class DestroyController extends Controllers\Controller
+class DestroyController extends BaseController
 {
     public function __invoke(Manure $manure)
     {
