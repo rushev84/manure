@@ -32,6 +32,6 @@
     </table>
 
     <div>
-        {{ $manures->links() }}
+        {{ $manures->withQueryString()->links() }}
     </div>
 @endsection

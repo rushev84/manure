@@ -24,15 +24,16 @@ class FilterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'norm_nitrogen' => 'required|numeric',
-            'norm_phosphorus' => 'required|numeric',
-            'norm_potassium' => 'required|numeric',
-            'district' => 'required|string',
-            'price' => 'required|string',
-            'description' => 'required|string',
-            'purpose' => 'required|string',
-            'culture_id' => ''
+            'name' => '',
+//            'norm_nitrogen' => 'required|numeric',
+//            'norm_phosphorus' => 'required|numeric',
+//            'norm_potassium' => 'required|numeric',
+//            'district' => '',
+//            'price' => 'required|string',
+            'description' => '',
+            'purpose' => '',
+            'culture_id' => '',
+
         ];
     }
 }

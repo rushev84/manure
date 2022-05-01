@@ -13,8 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/manures', 'ManureController@index')->name('manure.index');
-Route::get('/cultures', 'CultureController@index')->name('culture.index');
+//Route::get('/manures', 'ManureController@index')->name('manure.index');
+//Route::get('/cultures', 'CultureController@index')->name('culture.index');
 
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
@@ -33,5 +33,5 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     });
 });
 
-Route::get('/manure/create', 'ManureController@create');
-Route::get('/main', 'MainController');
+//Route::get('/manure/create', 'ManureController@create');
+//Route::get('/main', 'MainController');
