@@ -25,9 +25,19 @@ class FilterRequest extends FormRequest
     {
         return [
             'name' => '',
-//            'norm_nitrogen' => 'required|numeric',
-//            'norm_phosphorus' => 'required|numeric',
-//            'norm_potassium' => 'required|numeric',
+
+            'norm_nitrogen_from' => '',
+            'norm_nitrogen_to' => '',
+
+            'norm_phosphorus_from' => '',
+            'norm_phosphorus_to' => '',
+
+            'norm_potassium_from' => '',
+            'norm_potassium_to' => '',
+
+            'price_from' => '',
+            'price_to' => '',
+
 //            'district' => '',
 //            'price' => 'required|string',
             'description' => '',
