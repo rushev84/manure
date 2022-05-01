@@ -13,9 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/manures', 'ManureController@index')->name('manure.index');
-//Route::get('/cultures', 'CultureController@index')->name('culture.index');
-
+Route::get('/', 'IndexController');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::group(['namespace' => 'Manure'], function () {
@@ -28,10 +26,10 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         Route::patch('/manures/{manure}', 'UpdateController')->name('admin.manure.update');
         Route::delete('/manures/{manure}', 'DestroyController')->name('admin.manure.delete');
-
-
     });
 });
 
-//Route::get('/manure/create', 'ManureController@create');
-//Route::get('/main', 'MainController');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

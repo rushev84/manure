@@ -40,6 +40,7 @@ class FilterRequest extends FormRequest
 
 //            'district' => '',
 //            'price' => 'required|string',
+
             'description' => '',
             'purpose' => '',
             'culture_id' => '',

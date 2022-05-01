@@ -6,10 +6,12 @@ use App\Http\Controllers;
 use App\Models\Manure;
 use Illuminate\Http\Request;
 
-class MainController extends Controllers\Controller
+class IndexController extends Controllers\Controller
 {
     public function __invoke()
     {
-        return view('main');
+        $manures = Manure::paginate(10);
+
+        return view('index', compact('manures'));
     }
 }

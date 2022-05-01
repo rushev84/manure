@@ -12,22 +12,21 @@
 <div class="container">
     <div class="row">
 
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
             <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('manureweb.index') }}">Удобрения</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('culture.index') }}">Культуры</a>
-                        </li>
+                <span class="navbar-brand" href="#">Телефон для заказа удобрений: <b>+7 950 055 55 55</b></span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     </ul>
+                    <form class="d-flex">
+                        <a href="{{ route('home') }}" class="btn btn-outline-success">Вход в админку</a>
+                    </form>
                 </div>
             </div>
         </nav>
-
     </div>
 
 
