@@ -39,11 +39,12 @@ class FilterRequest extends FormRequest
             'price_to' => '',
 
 //            'district' => '',
-//            'price' => 'required|string',
 
             'description' => '',
             'purpose' => '',
             'culture_id' => '',
+
+            'cultures' => ''
 
         ];
     }

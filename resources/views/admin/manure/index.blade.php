@@ -47,6 +47,15 @@
                             @enderror
                         </div>
 
+                        <div class="form-group">
+                            <label for="cultures">Культуры:</label>
+                            <select multiple class="form-control" id="cultures" name="cultures[]">
+                                @foreach($cultures as $culture)
+                                    <option value="{{ $culture->id }}">{{ $culture->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
                         <button type="submit" class="btn btn-info mb-5">Применить фильтр</button>
                     </form>
                 </div>

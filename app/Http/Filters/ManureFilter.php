@@ -24,6 +24,8 @@ class ManureFilter extends AbstractFilter
     public const PRICE_FROM = 'price_from';
     public const PRICE_TO = 'price_to';
 
+    public const CULTURES = 'cultures';
+
     protected function getCallbacks(): array
     {
         return [
@@ -42,6 +44,8 @@ class ManureFilter extends AbstractFilter
 
             self::PRICE_FROM => [$this, 'price_from'],
             self::PRICE_TO => [$this, 'price_to'],
+
+            self::CULTURES => [$this, 'cultures'],
         ];
     }
 
@@ -100,5 +104,10 @@ class ManureFilter extends AbstractFilter
     public function price_to(Builder $builder, $priceTo)
     {
         $builder->where('price', '<', $priceTo);
+    }
+
+    public function cultures(Builder $builder, $arrayOfIds)
+    {
+        $builder->whereIn('culture_id', $arrayOfIds);
     }
 }

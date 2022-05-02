@@ -4,7 +4,7 @@
             <a href="{{ route('admin.manure.index') }}" class="nav-link">
                 <p>
                     Удобрения
-                    <span class="badge badge-info right">2</span>
+                    <span class="badge badge-info right">{{ $manures->total() }}</span>
                 </p>
             </a>
         </li>
