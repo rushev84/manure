@@ -44,9 +44,11 @@
             <li class="nav-item">
                 <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
             </li>
-            <li class="nav-item d-none d-sm-inline-block">
-                <a href="index3.html" class="nav-link">Перейти к списку менеджеров</a>
-            </li>
+            @can('view', auth()->user())
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="index3.html" class="nav-link">Перейти к списку менеджеров</a>
+                </li>
+            @endcan
         </ul>
 
         <!-- Right navbar links -->

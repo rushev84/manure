@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'IndexController');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
+// пока не используем middleware
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
     Route::group(['namespace' => 'Manure'], function () {
         Route::get('/manures', 'IndexController')->name('admin.manure.index');
 
