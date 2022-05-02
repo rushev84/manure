@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Filters\ManureFilter;
+use App\Http\Requests\Admin\Manure\FilterRequest;
+use App\Models\Manure;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +24,29 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+
+//     работает!
     public function index()
     {
-        return view('home');
+        return redirect()->route('admin.manure.index');
     }
+
+//    public function index()
+//    {
+//        return view('home');
+//    }
+
+
+//    public function index(FilterRequest $request)
+//    {
+//        $data = $request->validated();
+//
+//        $filter = app()->make(ManureFilter::class, ['queryParams' => array_filter($data)]);
+//
+//        $manures = Manure::filter($filter)->paginate(10);
+//
+//        return view('admin.manure.index', compact('manures'));
+//
+//    }
 }

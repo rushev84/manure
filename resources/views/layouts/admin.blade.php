@@ -72,7 +72,16 @@
                          alt="User Image">
                 </div>
                 <div class="info">
-                    <a href="#" class="d-block">Alexander Pierce</a>
+                    <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+                    <a class="btn btn-danger mt-2" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                        Выйти
+                    </a>
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
                 </div>
             </div>
 

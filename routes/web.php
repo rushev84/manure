@@ -26,6 +26,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admi
 
         Route::patch('/manures/{manure}', 'UpdateController')->name('admin.manure.update');
         Route::delete('/manures/{manure}', 'DestroyController')->name('admin.manure.delete');
+
+        Route::get('/manures_soft_deleted', 'SoftDeletedController')->name('admin.manures_soft_deleted');
     });
 });
 
