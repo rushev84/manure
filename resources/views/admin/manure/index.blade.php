@@ -29,31 +29,105 @@
             <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
                 <div class="card-block pt-2 pl-3">
                     <form action="{{ route('admin.manure.index') }}" method="get">
-                        {{--                        @csrf--}}
-                        <div class="form-group">
-                            <label for="name">Название удобрения</label>
-                            <input value="{{ old('name') }}" type="text" name="name" class="form-control" id="name"
-                                   placeholder="Название удобрения">
-                            @error('name')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label for="norm_nitrogen_from">Норма азота: от</label>
-                            <input value="{{ old('norm_nitrogen_from') }}" type="text" name="norm_nitrogen_from"
-                                   class="form-control" id="norm_nitrogen_from" placeholder="0.0">
-                            @error('norm_nitrogen_from')
-                            <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        </div>
+                        <div style="display: flex">
+                            {{--                        @csrf--}}
+                            <div class="form-group mr-3">
+                                <label for="name">Название</label>
+                                <input value="{{ isset($data['name']) ? $data['name'] : null }}" type="text" name="name"
+                                       class="form-control mb-2"
+                                       id="name"
+                                       placeholder="Название">
 
-                        <div class="form-group">
-                            <label for="cultures">Культуры:</label>
-                            <select multiple class="form-control" id="cultures" name="cultures[]">
-                                @foreach($cultures as $culture)
-                                    <option value="{{ $culture->id }}">{{ $culture->name }}</option>
-                                @endforeach
-                            </select>
+                                <label for="district">Район</label>
+                                <input value="{{ isset($data['district']) ? $data['district'] : null }}" type="text" name="district"
+                                       class="form-control mb-2"
+                                       id="district"
+                                       placeholder="Район">
+
+                                <label for="purpose">Назначение</label>
+                                <input value="{{ isset($data['purpose']) ? $data['purpose'] : null }}" type="text" name="purpose"
+                                       class="form-control mb-2"
+                                       id="purpose"
+                                       placeholder="Район">
+
+                                <label for="description">Описание</label>
+                                <input value="{{ isset($data['description']) ? $data['description'] : null }}" type="text" name="description"
+                                       class="form-control mb-2"
+                                       id="description"
+                                       placeholder="Район">
+
+                            </div>
+                            <div class="form-group mr-3" style="flex-basis: 150px">
+                                <label for="norm_nitrogen_from">Норма азота: </label> от
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['norm_nitrogen_from']) ? $data['norm_nitrogen_from'] : null }}"
+                                    type="text" name="norm_nitrogen_from"
+                                    class="form-control" id="norm_nitrogen_from" placeholder="0.0">
+                                до
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['norm_nitrogen_to']) ? $data['norm_nitrogen_to'] : null }}"
+                                    type="text" name="norm_nitrogen_to"
+                                    class="form-control mt-1" id="norm_nitrogen_to" placeholder="0.0">
+                            </div>
+                            <div class="form-group mr-3" style="flex-basis: 150px">
+                                <label for="norm_phosphorus_from">Норма фосфора: </label> от
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['norm_phosphorus_from']) ? $data['norm_phosphorus_from'] : null }}"
+                                    type="text" name="norm_phosphorus_from"
+                                    class="form-control" id="norm_phosphorus_from" placeholder="0.0">
+                                до
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['norm_phosphorus_to']) ? $data['norm_phosphorus_to'] : null }}"
+                                    type="text" name="norm_phosphorus_to"
+                                    class="form-control mt-1" id="norm_phosphorus_to" placeholder="0.0">
+                            </div>
+                            <div class="form-group mr-3" style="flex-basis: 150px">
+                                <label for="norm_potassium_from">Норма калия: </label> от
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['norm_potassium_from']) ? $data['norm_potassium_from'] : null }}"
+                                    type="text" name="norm_potassium_from"
+                                    class="form-control" id="norm_potassium_from" placeholder="0.0">
+                                до
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['norm_potassium_to']) ? $data['norm_potassium_to'] : null }}"
+                                    type="text" name="norm_potassium_to"
+                                    class="form-control mt-1" id="norm_potassium_to" placeholder="0.0">
+                            </div>
+                            <div class="form-group mr-3" style="flex-basis: 150px">
+                                <label for="price_from">Цена: </label> от
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['price_from']) ? $data['price_from'] : null }}"
+                                    type="text" name="price_from"
+                                    class="form-control" id="price_from" placeholder="0.0">
+                                до
+                                <input
+                                    style="width: 120px"
+                                    value="{{ isset($data['price_to']) ? $data['price_to'] : null }}"
+                                    type="text" name="price_to"
+                                    class="form-control mt-1" id="price_to" placeholder="0.0">
+                            </div>
+
+                            <div class="form-group mr-3">
+                                <label for="cultures">Культуры:</label>
+                                <select multiple class="form-control" id="cultures" name="cultures[]">
+                                    @foreach($cultures as $culture)
+                                        <option
+                                            @if(isset($data['cultures']))
+                                            @foreach($data['cultures'] as $culture_id)
+                                            {{ $culture_id == $culture->id ? ' selected' : '' }}
+                                            @endforeach
+                                            @endif
+                                            value="{{ $culture->id }}">{{ $culture->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
 
                         <button type="submit" class="btn btn-info mb-5">Применить фильтр</button>
@@ -61,35 +135,6 @@
                 </div>
             </div>
         </div>
-
-
-        {{--        <div class="card">--}}
-        {{--            <div class="card-header" role="tab" id="headingTwo">--}}
-        {{--                <h5 class="mb-0">--}}
-        {{--                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"--}}
-        {{--                       aria-expanded="false" aria-controls="collapseTwo">--}}
-        {{--                        Фильтр по удобрениям--}}
-        {{--                    </a>--}}
-        {{--                </h5>--}}
-        {{--            </div>--}}
-        {{--            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">--}}
-        {{--                <div class="card-block pt-2 pl-3">--}}
-        {{--                    <form action="" method="post">--}}
-        {{--                        @csrf--}}
-        {{--                        <div class="form-group">--}}
-        {{--                            <label for="name">Название удобрения</label>--}}
-        {{--                            <input value="{{ old('name') }}" type="text" name="name" class="form-control" id="name"--}}
-        {{--                                   placeholder="Название удобрения">--}}
-        {{--                            @error('name')--}}
-        {{--                            <p class="text-danger">{{ $message }}</p>--}}
-        {{--                            @enderror--}}
-        {{--                        </div>--}}
-
-        {{--                        <button type="submit" class="btn btn-primary mb-5">Применить фильтр</button>--}}
-        {{--                    </form>--}}
-        {{--                </div>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
     </div>
 
 

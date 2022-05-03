@@ -38,11 +38,9 @@ class FilterRequest extends FormRequest
             'price_from' => '',
             'price_to' => '',
 
-//            'district' => '',
-
+            'district' => '',
             'description' => '',
             'purpose' => '',
-            'culture_id' => '',
 
             'cultures' => ''
 

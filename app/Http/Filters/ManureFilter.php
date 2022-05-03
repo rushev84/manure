@@ -11,6 +11,7 @@ class ManureFilter extends AbstractFilter
     public const NAME = 'name';
     public const DESCRIPTION = 'description';
     public const PURPOSE = 'purpose';
+    public const DISTRICT = 'district';
 
     public const NORM_NITROGEN_FROM = 'norm_nitrogen_from';
     public const NORM_NITROGEN_TO = 'norm_nitrogen_to';
@@ -24,6 +25,7 @@ class ManureFilter extends AbstractFilter
     public const PRICE_FROM = 'price_from';
     public const PRICE_TO = 'price_to';
 
+
     public const CULTURES = 'cultures';
 
     protected function getCallbacks(): array
@@ -32,6 +34,7 @@ class ManureFilter extends AbstractFilter
             self::NAME => [$this, 'name'],
             self::DESCRIPTION => [$this, 'description'],
             self::PURPOSE => [$this, 'purpose'],
+            self::DISTRICT => [$this, 'district'],
 
             self::NORM_NITROGEN_FROM => [$this, 'norm_nitrogen_from'],
             self::NORM_NITROGEN_TO => [$this, 'norm_nitrogen_to'],
@@ -63,6 +66,11 @@ class ManureFilter extends AbstractFilter
     public function purpose(Builder $builder, $value)
     {
         $builder->where('purpose', 'like', "%{$value}%");
+    }
+
+    public function district(Builder $builder, $value)
+    {
+        $builder->where('district', 'like', "%{$value}%");
     }
 
     // поиск от и до -------------

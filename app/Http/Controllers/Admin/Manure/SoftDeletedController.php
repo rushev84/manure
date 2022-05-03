@@ -9,8 +9,8 @@ class SoftDeletedController extends BaseController
 {
     public function __invoke()
     {
-        $manures = Manure::onlyTrashed()->get();
+        $manuresOnlyTrashed = Manure::onlyTrashed()->get();
 
-        return view('admin.manure.soft_deleted', compact('manures'));
+        return view('admin.manure.soft_deleted', compact('manuresOnlyTrashed' ));
     }
 }

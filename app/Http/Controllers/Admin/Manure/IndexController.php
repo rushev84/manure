@@ -16,11 +16,11 @@ class IndexController extends BaseController
 
         $filter = app()->make(ManureFilter::class, ['queryParams' => array_filter($data)]);
 
-//        dd($data);
-
         $manures = Manure::filter($filter)->paginate(10);
         $cultures = Culture::all();
 
-        return view('admin.manure.index', compact('manures', 'cultures'));
+//        dd($data);
+
+        return view('admin.manure.index', compact('manures', 'cultures', 'data'));
     }
 }

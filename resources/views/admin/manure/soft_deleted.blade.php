@@ -17,7 +17,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach($manures as $manure)
+        @foreach($manuresOnlyTrashed as $manure)
 
             <tr>
                 <th scope="row">{{ $manure->id }}</th>
