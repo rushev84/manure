@@ -17,6 +17,7 @@ Route::get('/', 'IndexController');
 
 // пока не используем middleware
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+
     Route::group(['namespace' => 'Manure'], function () {
         Route::get('/manures', 'IndexController')->name('admin.manure.index');
 
@@ -41,6 +42,19 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::delete('/cultures/{culture}', 'DestroyController')->name('admin.culture.delete');
 
         Route::get('/cultures_soft_deleted', 'SoftDeletedController')->name('admin.cultures_soft_deleted');
+    });
+
+    Route::group(['namespace' => 'Client'], function () {
+        Route::get('/clients', 'IndexController')->name('admin.client.index');
+
+        Route::get('/clients/create', 'CreateController')->name('admin.client.create');
+        Route::post('/clients', 'StoreController')->name('admin.client.store');
+        Route::get('/clients/{client}/edit', 'EditController')->name('admin.client.edit');
+
+        Route::patch('/clients/{client}', 'UpdateController')->name('admin.client.update');
+        Route::delete('/clients/{client}', 'DestroyController')->name('admin.client.delete');
+
+        Route::get('/clients_soft_deleted', 'SoftDeletedController')->name('admin.clients_soft_deleted');
     });
 
 });

@@ -21,7 +21,7 @@
 
             <tr>
                 <th scope="row">{{ $manure->id }}</th>
-                <td><a href="{{ route('admin.manure.show', $manure->id) }}">{{ $manure->name }}</a></td>
+                <td>{{ $manure->name }}</td>
                 <td>{{ $manure->culture->name }}</td>
                 <td>{{ $manure->district }}</td>
                 <td>{{ $manure->price }}</td>

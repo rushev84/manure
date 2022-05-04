@@ -2,8 +2,6 @@
 
 @section('content')
 
-
-
     <div>
         <form action="{{ route('admin.culture.store') }}" method="post">
             @csrf
