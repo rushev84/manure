@@ -30,6 +30,19 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         Route::get('/manures_soft_deleted', 'SoftDeletedController')->name('admin.manures_soft_deleted');
     });
+
+    Route::group(['namespace' => 'Culture'], function () {
+        Route::get('/cultures', 'IndexController')->name('admin.culture.index');
+
+        Route::post('/cultures', 'StoreController')->name('admin.culture.store');
+        Route::get('/cultures/{culture}/edit', 'EditController')->name('admin.culture.edit');
+
+        Route::patch('/cultures/{culture}', 'UpdateController')->name('admin.culture.update');
+        Route::delete('/cultures/{culture}', 'DestroyController')->name('admin.culture.delete');
+
+        Route::get('/cultures_soft_deleted', 'SoftDeletedController')->name('admin.cultures_soft_deleted');
+    });
+
 });
 
 

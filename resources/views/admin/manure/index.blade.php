@@ -4,15 +4,7 @@
 
     <div class="mb-3">
         <a href="{{ route('admin.manure.create') }}" class="btn btn-primary">Добавить удобрение</a>
-        <a href="{{ route('admin.manures_soft_deleted') }}" class="btn btn-secondary ml-3">Удалённые удобрения</a>
-
-
     </div>
-
-
-
-
-
 
     <div id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -48,13 +40,13 @@
                                 <input value="{{ isset($data['purpose']) ? $data['purpose'] : null }}" type="text" name="purpose"
                                        class="form-control mb-2"
                                        id="purpose"
-                                       placeholder="Район">
+                                       placeholder="Назначение">
 
                                 <label for="description">Описание</label>
                                 <input value="{{ isset($data['description']) ? $data['description'] : null }}" type="text" name="description"
                                        class="form-control mb-2"
                                        id="description"
-                                       placeholder="Район">
+                                       placeholder="Описание">
 
                             </div>
                             <div class="form-group mr-3" style="flex-basis: 150px">
@@ -167,4 +159,9 @@
     <div>
         {{ $manures->withQueryString()->links() }}
     </div>
+<div style="display: flex; justify-content: flex-end;">
+    <div>
+    <a href="{{ route('admin.manures_soft_deleted') }}" class="btn btn-secondary ml-3 mb-3">Удалённые удобрения</a>
+    </div>
+</div>
 @endsection
