@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin\Client;
 
 use App\Http\Controllers;
+use App\Http\Filters\ClientFilter;
 use App\Http\Filters\ManureFilter;
 use App\Http\Requests\Admin\Manure\FilterRequest;
 use App\Models\Culture;
@@ -16,14 +17,15 @@ class IndexController extends BaseController
     {
 
 //        $data = $request->validated();
-
-//        $filter = app()->make(ManureFilter::class, ['queryParams' => array_filter($data)]);
 //
-//        $manures = Manure::filter($filter)->paginate(10);
+//        dd($data);
+//
+//        $filter = app()->make(ClientFilter::class, ['queryParams' => array_filter($data)]);
 
-//        return view('admin.manure.index', compact('manures',  'data'));
-
+//        $clients = Client::filter($filter)->paginate(10);
         $clients = Client::paginate(10);
+
+//        return view('admin.manure.index', compact('clients',  'data'));
         return view('admin.client.index', compact('clients'));
     }
 }
