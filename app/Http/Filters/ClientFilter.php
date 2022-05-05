@@ -9,46 +9,22 @@ use Illuminate\Database\Eloquent\Builder;
 class ClientFilter extends AbstractFilter
 {
     public const NAME = 'name';
-    public const DESCRIPTION = 'description';
-    public const PURPOSE = 'purpose';
-    public const DISTRICT = 'district';
 
-    public const NORM_NITROGEN_FROM = 'norm_nitrogen_from';
-    public const NORM_NITROGEN_TO = 'norm_nitrogen_to';
+    public const DELIVERY_COST_FROM = 'delivery_cost_from';
+    public const DELIVERY_COST_TO = 'delivery_cost_to';
 
-    public const NORM_PHOSPHORUS_FROM = 'norm_phosphorus_from';
-    public const NORM_PHOSPHORUS_TO = 'norm_phosphorus_to';
+    public const REGION = 'region';
 
-    public const NORM_POTASSIUM_FROM = 'norm_potassium_from';
-    public const NORM_POTASSIUM_TO = 'norm_potassium_to';
-
-    public const PRICE_FROM = 'price_from';
-    public const PRICE_TO = 'price_to';
-
-
-    public const CULTURES = 'cultures';
 
     protected function getCallbacks(): array
     {
         return [
             self::NAME => [$this, 'name'],
-            self::DESCRIPTION => [$this, 'description'],
-            self::PURPOSE => [$this, 'purpose'],
-            self::DISTRICT => [$this, 'district'],
 
-            self::NORM_NITROGEN_FROM => [$this, 'norm_nitrogen_from'],
-            self::NORM_NITROGEN_TO => [$this, 'norm_nitrogen_to'],
+            self::DELIVERY_COST_FROM => [$this, 'delivery_cost_from'],
+            self::DELIVERY_COST_TO => [$this, 'delivery_cost_to'],
 
-            self::NORM_PHOSPHORUS_FROM => [$this, 'norm_phosphorus_from'],
-            self::NORM_PHOSPHORUS_TO => [$this, 'norm_phosphorus_to'],
-
-            self::NORM_POTASSIUM_FROM => [$this, 'norm_potassium_from'],
-            self::NORM_POTASSIUM_TO => [$this, 'norm_potassium_to'],
-
-            self::PRICE_FROM => [$this, 'price_from'],
-            self::PRICE_TO => [$this, 'price_to'],
-
-            self::CULTURES => [$this, 'cultures'],
+            self::REGION => [$this, 'region'],
         ];
     }
 
@@ -58,64 +34,19 @@ class ClientFilter extends AbstractFilter
         $builder->where('name', 'like', "%{$value}%");
     }
 
-    public function description(Builder $builder, $value)
+    public function region(Builder $builder, $value)
     {
-        $builder->where('description', 'like', "%{$value}%");
-    }
-
-    public function purpose(Builder $builder, $value)
-    {
-        $builder->where('purpose', 'like', "%{$value}%");
-    }
-
-    public function district(Builder $builder, $value)
-    {
-        $builder->where('district', 'like', "%{$value}%");
+        $builder->where('region', 'like', "%{$value}%");
     }
 
     // поиск от и до -------------
-    public function norm_nitrogen_from(Builder $builder, $normNitrogenFrom)
+    public function delivery_cost_from(Builder $builder, $deliveryCostFrom)
     {
-        $builder->where('norm_nitrogen', '>', $normNitrogenFrom);
+        $builder->where('delivery_cost', '>', $deliveryCostFrom);
     }
 
-    public function norm_nitrogen_to(Builder $builder, $normNitrogenTo)
+    public function delivery_cost_to(Builder $builder, $deliveryCostTo)
     {
-        $builder->where('norm_nitrogen', '<', $normNitrogenTo);
-    }
-
-    public function norm_phosphorus_from(Builder $builder, $normPhosphorusFrom)
-    {
-        $builder->where('norm_phosphorus', '>', $normPhosphorusFrom);
-    }
-
-    public function norm_phosphorus_to(Builder $builder, $normPhosphorusTo)
-    {
-        $builder->where('norm_phosphorus', '<', $normPhosphorusTo);
-    }
-
-    public function norm_potassium_from(Builder $builder, $normPotassiumFrom)
-    {
-        $builder->where('norm_phosphorus', '>', $normPotassiumFrom);
-    }
-
-    public function norm_potassium_to(Builder $builder, $normPotassiumTo)
-    {
-        $builder->where('norm_potassium', '<', $normPotassiumTo);
-    }
-
-    public function price_from(Builder $builder, $priceFrom)
-    {
-        $builder->where('price', '>', $priceFrom);
-    }
-
-    public function price_to(Builder $builder, $priceTo)
-    {
-        $builder->where('price', '<', $priceTo);
-    }
-
-    public function cultures(Builder $builder, $arrayOfIds)
-    {
-        $builder->whereIn('culture_id', $arrayOfIds);
+        $builder->where('delivery_cost', '<', $deliveryCostTo);
     }
 }

@@ -34,23 +34,19 @@
                                                id="name"
                                                placeholder="Название">
                                     </div>
-                                    <div class="mr-3">
-                                        <label for="contract_date">Дата договора</label>
+                                    <div class="form-group mr-3" style="width: 200px">
+                                        <label for="delivery_cost_from">Стоимость поставки: </label> от
                                         <input
-                                            value="{{ isset($data['contract_date']) ? $data['contract_date'] : null }}"
-                                            type="text" name="contract_date"
-                                            class="form-control mb-2"
-                                            id="contract_date"
-                                            placeholder="01.01.2022">
-                                    </div>
-                                    <div class="mr-3">
-                                        <label for="delivery_cost">Стоимость поставки</label>
+                                            style="width: 120px"
+                                            value="{{ isset($data['delivery_cost_from']) ? $data['delivery_cost_from'] : null }}"
+                                            type="text" name="delivery_cost_from"
+                                            class="form-control" id="delivery_cost_from" placeholder="0.0">
+                                        до
                                         <input
-                                            value="{{ isset($data['delivery_cost']) ? $data['delivery_cost'] : null }}"
-                                            type="text" name="delivery_cost"
-                                            class="form-control mb-2"
-                                            id="delivery_cost"
-                                            placeholder="1000">
+                                            style="width: 120px"
+                                            value="{{ isset($data['delivery_cost_to']) ? $data['delivery_cost_to'] : null }}"
+                                            type="text" name="delivery_cost_to"
+                                            class="form-control mt-1" id="delivery_cost_to" placeholder="0.0">
                                     </div>
                                     <div class="mr-3">
                                         <label for="region">Регион</label>
