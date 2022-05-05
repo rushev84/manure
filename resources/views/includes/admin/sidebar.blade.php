@@ -10,10 +10,12 @@
                 <p>Культуры</p>
             </a>
         </li>
+        @can('view', auth()->user())
         <li class="nav-item">
             <a href="{{ route('admin.client.index') }}" class="nav-link">
                 <p>Клиенты</p>
             </a>
         </li>
+        @endcan
     </ul>
 </nav>

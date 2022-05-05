@@ -46,7 +46,7 @@
             </li>
             @can('view', auth()->user())
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index3.html" class="nav-link">Перейти к списку менеджеров</a>
+                    <a href="{{ route('admin.user.index') }}" class="nav-link">Список пользователей</a>
                 </li>
             @endcan
         </ul>

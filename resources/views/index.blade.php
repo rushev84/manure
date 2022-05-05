@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
-    Manures page (список удобрений для клиентов)
-    <table class="table">
+
+    <table class="table mt-5">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -16,7 +16,7 @@
 
             <tr>
                 <th scope="row">{{ $manure->id }}</th>
-                <td><a href="{{ route('admin.manure.show', $manure->id) }}">{{ $manure->name }}</a></td>
+                <td><a href="{{ route('manure.show', $manure->id) }}">{{ $manure->name }}</a></td>
                 <td>{{ $manure->culture->name }}</td>
                 <td>{{ $manure->district }}</td>
                 <td>{{ $manure->price }}</td>

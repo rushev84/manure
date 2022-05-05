@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'IndexController');
+Route::get('/', 'MainController');
+Route::get('/manures', 'IndexController')->name('manure.index');
+Route::get('/manures/{manure}', 'ShowController')->name('manure.show');
 
 // пока не используем middleware
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
@@ -55,6 +57,12 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::delete('/clients/{client}', 'DestroyController')->name('admin.client.delete');
 
         Route::get('/clients_soft_deleted', 'SoftDeletedController')->name('admin.clients_soft_deleted');
+    });
+
+    Route::group(['namespace' => 'User'], function () {
+        Route::get('/users', 'IndexController')->name('admin.user.index');
+
+        Route::delete('/users/{user}', 'DestroyController')->name('admin.user.delete');
     });
 
 });
