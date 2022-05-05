@@ -27,8 +27,8 @@ class FilterRequest extends FormRequest
 
             'name' => '',
 
-//            'contract_date_from' => '',
-//            'contract_date_to' => '',
+            'contract_date_from' => '',
+            'contract_date_to' => '',
 
             'delivery_cost_from' => '',
             'delivery_cost_to' => '',

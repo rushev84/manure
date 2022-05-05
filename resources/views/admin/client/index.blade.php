@@ -48,6 +48,20 @@
                                             type="text" name="delivery_cost_to"
                                             class="form-control mt-1" id="delivery_cost_to" placeholder="0.0">
                                     </div>
+                                    <div class="form-group mr-3" style="width: 200px">
+                                        <label for="contract_date_from">Дата договора: </label> от
+                                        <input
+                                            style="width: 120px"
+                                            value="{{ isset($data['contract_date_from']) ? $data['contract_date_from'] : null }}"
+                                            type="text" name="contract_date_from"
+                                            class="form-control" id="contract_date_from" placeholder="0.0">
+                                        до
+                                        <input
+                                            style="width: 120px"
+                                            value="{{ isset($data['contract_date_to']) ? $data['contract_date_to'] : null }}"
+                                            type="text" name="contract_date_to"
+                                            class="form-control mt-1" id="contract_date_to" placeholder="0.0">
+                                    </div>
                                     <div class="mr-3">
                                         <label for="region">Регион</label>
                                         <input value="{{ isset($data['region']) ? $data['region'] : null }}" type="text"

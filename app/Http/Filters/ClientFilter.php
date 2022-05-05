@@ -13,6 +13,9 @@ class ClientFilter extends AbstractFilter
     public const DELIVERY_COST_FROM = 'delivery_cost_from';
     public const DELIVERY_COST_TO = 'delivery_cost_to';
 
+    public const CONTRACT_DATE_FROM = 'contract_date_from';
+    public const CONTRACT_DATE_TO = 'contract_date_to';
+
     public const REGION = 'region';
 
 
@@ -23,6 +26,9 @@ class ClientFilter extends AbstractFilter
 
             self::DELIVERY_COST_FROM => [$this, 'delivery_cost_from'],
             self::DELIVERY_COST_TO => [$this, 'delivery_cost_to'],
+
+            self::CONTRACT_DATE_FROM => [$this, 'contract_date_from'],
+            self::CONTRACT_DATE_TO => [$this, 'contract_date_to'],
 
             self::REGION => [$this, 'region'],
         ];
@@ -48,5 +54,15 @@ class ClientFilter extends AbstractFilter
     public function delivery_cost_to(Builder $builder, $deliveryCostTo)
     {
         $builder->where('delivery_cost', '<', $deliveryCostTo);
+    }
+
+    public function contract_date_from(Builder $builder, $contractDateFrom)
+    {
+        $builder->where('contract_date', '>', $contractDateFrom);
+    }
+
+    public function contract_date_to(Builder $builder, $contractDateTo)
+    {
+        $builder->where('contract_date', '<', $contractDateTo);
     }
 }
