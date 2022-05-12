@@ -57,6 +57,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::delete('/clients/{client}', 'DestroyController')->name('admin.client.delete');
 
         Route::get('/clients_soft_deleted', 'SoftDeletedController')->name('admin.clients_soft_deleted');
+
     });
 
     Route::group(['namespace' => 'User'], function () {
