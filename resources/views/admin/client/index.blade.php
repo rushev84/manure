@@ -38,15 +38,15 @@
                                         <label for="delivery_cost_from">Стоимость поставки: </label> от
                                         <input
                                             style="width: 120px"
-                                            value="{{ isset($data['delivery_cost_from']) ? $data['delivery_cost_from'] : null }}"
+                                            value="{{ isset($data['delivery_cost_from']) ? $data['delivery_cost_from'] : '' }}"
                                             type="text" name="delivery_cost_from"
-                                            class="form-control" id="delivery_cost_from" placeholder="0.0">
+                                            class="form-control" id="delivery_cost_from" placeholder="0">
                                         до
                                         <input
                                             style="width: 120px"
                                             value="{{ isset($data['delivery_cost_to']) ? $data['delivery_cost_to'] : null }}"
                                             type="text" name="delivery_cost_to"
-                                            class="form-control mt-1" id="delivery_cost_to" placeholder="0.0">
+                                            class="form-control mt-1" id="delivery_cost_to" placeholder="0">
                                     </div>
                                     <div class="form-group mr-3" style="width: 200px">
                                         <label for="contract_date_from">Дата договора: </label> от
@@ -54,13 +54,19 @@
                                             style="width: 120px"
                                             value="{{ isset($data['contract_date_from']) ? $data['contract_date_from'] : null }}"
                                             type="text" name="contract_date_from"
-                                            class="form-control" id="contract_date_from" placeholder="0.0">
+                                            class="form-control" id="contract_date_from" placeholder="2001-01-01">
+                                        @error('contract_date_from')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                         до
                                         <input
                                             style="width: 120px"
                                             value="{{ isset($data['contract_date_to']) ? $data['contract_date_to'] : null }}"
                                             type="text" name="contract_date_to"
-                                            class="form-control mt-1" id="contract_date_to" placeholder="0.0">
+                                            class="form-control mt-1" id="contract_date_to" placeholder="2001-01-01">
+                                        @error('contract_date_to')
+                                        <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                     <div class="mr-3">
                                         <label for="region">Регион</label>

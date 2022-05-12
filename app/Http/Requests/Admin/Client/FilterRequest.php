@@ -25,15 +25,15 @@ class FilterRequest extends FormRequest
     {
         return [
 
-            'name' => '',
+            'name' => 'nullable',
 
-            'contract_date_from' => '',
-            'contract_date_to' => '',
+            'contract_date_from' => 'nullable|date_format:Y-m-d',
+            'contract_date_to' => 'nullable|date_format:Y-m-d',
 
-            'delivery_cost_from' => '',
-            'delivery_cost_to' => '',
+            'delivery_cost_from' => 'nullable',
+            'delivery_cost_to' => 'nullable',
 
-            'region' => ''
+            'region' => 'nullable'
         ];
     }
 }

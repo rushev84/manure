@@ -24,25 +24,25 @@ class FilterRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => '',
+            'name' => 'nullable',
 
-            'norm_nitrogen_from' => '',
-            'norm_nitrogen_to' => '',
+            'norm_nitrogen_from' => 'nullable',
+            'norm_nitrogen_to' => 'nullable',
 
-            'norm_phosphorus_from' => '',
-            'norm_phosphorus_to' => '',
+            'norm_phosphorus_from' => 'nullable',
+            'norm_phosphorus_to' => 'nullable',
 
-            'norm_potassium_from' => '',
-            'norm_potassium_to' => '',
+            'norm_potassium_from' => 'nullable',
+            'norm_potassium_to' => 'nullable',
 
-            'price_from' => '',
-            'price_to' => '',
+            'price_from' => 'nullable',
+            'price_to' => 'nullable',
 
-            'district' => '',
-            'description' => '',
-            'purpose' => '',
+            'district' => 'nullable',
+            'description' => 'nullable',
+            'purpose' => 'nullable',
 
-            'cultures' => ''
+            'cultures' => 'nullable'
 
         ];
     }
