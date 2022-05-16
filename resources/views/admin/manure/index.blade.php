@@ -1,11 +1,18 @@
 @extends('layouts.admin')
 
 @section('content')
-
-    <div class="mb-3">
+<div style="display: flex">
+    <div class="mb-3 mr-5" style="width: 200px">
         <a href="{{ route('admin.manure.create') }}" class="btn btn-primary">Добавить удобрение</a>
     </div>
-
+    <div class="ml-5">
+        <form action="{{ route('admin.manures_import') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <input type="file" name="files">
+            <button type="submit" class="btn btn-success">Загрузить Excel-файл с удобрениями</button>
+        </form>
+    </div>
+</div>
     <div id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="card">
@@ -31,19 +38,22 @@
                                        placeholder="Название">
 
                                 <label for="district">Район</label>
-                                <input value="{{ isset($data['district']) ? $data['district'] : null }}" type="text" name="district"
+                                <input value="{{ isset($data['district']) ? $data['district'] : null }}" type="text"
+                                       name="district"
                                        class="form-control mb-2"
                                        id="district"
                                        placeholder="Район">
 
                                 <label for="purpose">Назначение</label>
-                                <input value="{{ isset($data['purpose']) ? $data['purpose'] : null }}" type="text" name="purpose"
+                                <input value="{{ isset($data['purpose']) ? $data['purpose'] : null }}" type="text"
+                                       name="purpose"
                                        class="form-control mb-2"
                                        id="purpose"
                                        placeholder="Назначение">
 
                                 <label for="description">Описание</label>
-                                <input value="{{ isset($data['description']) ? $data['description'] : null }}" type="text" name="description"
+                                <input value="{{ isset($data['description']) ? $data['description'] : null }}"
+                                       type="text" name="description"
                                        class="form-control mb-2"
                                        id="description"
                                        placeholder="Описание">
@@ -159,9 +169,10 @@
     <div>
         {{ $manures->withQueryString()->links() }}
     </div>
-<div style="display: flex; justify-content: flex-end;">
-    <div>
-    <a href="{{ route('admin.manures_soft_deleted') }}" class="btn btn-secondary ml-3 mb-3">Удалённые удобрения</a>
+    <div style="display: flex; justify-content: flex-end;">
+        <div>
+            <a href="{{ route('admin.manures_soft_deleted') }}" class="btn btn-secondary ml-3 mb-3">Удалённые
+                удобрения</a>
+        </div>
     </div>
-</div>
 @endsection

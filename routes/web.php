@@ -34,6 +34,7 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/manures_soft_deleted', 'SoftDeletedController')->name('admin.manures_soft_deleted');
 
         Route::get('/manures_export', 'ExportController');
+        Route::post('/manures_import', 'ImportController')->name('admin.manures_import');
     });
 
     Route::group(['namespace' => 'Culture'], function () {
