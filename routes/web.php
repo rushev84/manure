@@ -32,6 +32,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::delete('/manures/{manure}', 'DestroyController')->name('admin.manure.delete');
 
         Route::get('/manures_soft_deleted', 'SoftDeletedController')->name('admin.manures_soft_deleted');
+
+        Route::get('/manures_export', 'ExportController');
     });
 
     Route::group(['namespace' => 'Culture'], function () {
@@ -57,7 +59,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::delete('/clients/{client}', 'DestroyController')->name('admin.client.delete');
 
         Route::get('/clients_soft_deleted', 'SoftDeletedController')->name('admin.clients_soft_deleted');
-
 
 
     });
