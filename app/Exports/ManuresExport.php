@@ -3,15 +3,26 @@
 namespace App\Exports;
 
 use App\Models\Manure;
-use Maatwebsite\Excel\Concerns\FromCollection;
+//use Maatwebsite\Excel\Concerns\FromCollection;
 
-class ManuresExport implements FromCollection
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
+
+class ManuresExport implements FromView
 {
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function view(): View
     {
-        return Manure::all();
+        return view('exports.manures', [
+            'manures' => Manure::all()
+        ]);
     }
+
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+//    public function collection()
+//    {
+//        return Manure::all();
+//    }
 }
