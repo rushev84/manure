@@ -11,6 +11,9 @@ class ManuresImport implements ToCollection
     public function collection(Collection $collection)
     {
         foreach ($collection as $row) {
+            if ($row[0] == 'Название') {
+                continue;
+            };
             if ($row->filter()->isNotEmpty()) {
                 Manure::firstOrCreate([
                     'name' => $row[0],
