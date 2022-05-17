@@ -6,7 +6,7 @@ use App\Imports\ManuresImport;
 use Illuminate\Console\Command;
 use Maatwebsite\Excel\Facades\Excel;
 
-class ExcelImportManures extends Command
+class ExcelImportManuresCommand extends Command
 {
     /**
      * The name and signature of the console command.
