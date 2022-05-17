@@ -11,6 +11,9 @@
             <input type="file" name="files">
             <button type="submit" class="btn btn-success">Загрузить Excel-файл с удобрениями</button>
         </form>
+            </div>
+    <div class="ml-5">
+        <a href="{{ route('admin.manures_export') }}" class="btn btn-secondary">Скачать Excel-файл с удобрениями</a>
     </div>
 </div>
     <div id="accordion" role="tablist" aria-multiselectable="true">
