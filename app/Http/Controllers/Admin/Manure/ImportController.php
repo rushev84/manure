@@ -14,8 +14,12 @@ class ImportController extends BaseController
         copy($request->file('files'), public_path() . '/imports/manures.xlsx');
 //        dd('success');
 
-        ManuresImportJob::dispatchNow();
+//        ManuresImportJob::dispatchNow();
 
+        $filePath = public_path().'/imports/manures.xlsx';
+        Excel::import(new ManuresImport(), $filePath);
+
+        return back()->withStatus('Данные успешно импортированы!');
 
         return redirect('/admin/manures');
     }

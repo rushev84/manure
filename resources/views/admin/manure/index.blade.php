@@ -1,21 +1,33 @@
 @extends('layouts.admin')
 
 @section('content')
-<div style="display: flex">
-    <div class="mb-3 mr-5" style="width: 200px">
-        <a href="{{ route('admin.manure.create') }}" class="btn btn-primary">Добавить удобрение</a>
-    </div>
-    <div class="ml-5">
-        <form action="{{ route('admin.manures_import') }}" method="post" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="files">
-            <button type="submit" class="btn btn-success">Загрузить Excel-файл с удобрениями</button>
-        </form>
+    <div>
+
+        <div style="display: flex">
+            <div class="mb-3 mr-5" style="width: 200px">
+                <a href="{{ route('admin.manure.create') }}" class="btn btn-primary">Добавить удобрение</a>
             </div>
-    <div class="ml-5">
-        <a href="{{ route('admin.manures_export') }}" class="btn btn-secondary">Скачать Excel-файл с удобрениями</a>
+            <div class="ml-5">
+                <form action="{{ route('admin.manures_import') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <input type="file" name="files">
+                    <button type="submit" class="btn btn-success"
+                            onclick="document.querySelector('.status').innerHTML = 'Данные импортируются...'">Загрузить
+                        Excel-файл с удобрениями
+                    </button>
+                </form>
+            </div>
+            <div class="ml-5">
+                <a href="{{ route('admin.manures_export') }}" class="btn btn-secondary">Скачать Excel-файл с
+                    удобрениями</a>
+            </div>
+
+        </div>
+        <div>
+            <div class="status">{{ session('status') }}</div>
+        </div>
     </div>
-</div>
+
     <div id="accordion" role="tablist" aria-multiselectable="true">
 
         <div class="card">

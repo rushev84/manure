@@ -35,11 +35,5 @@ class ManuresImportJob implements ShouldQueue
     public function handle()
     {
         \Illuminate\Support\Facades\Artisan::call('excel:import:manures');
-
-//        Excel::import(new ManuresImport(), public_path() . '/imports/manures.xlsx');
-//        dd('d');
-//        return redirect()->route('admin.manure.index');
-//        redirect()->route('admin.manure.index', ['message' => 'success']);
-
     }
 }

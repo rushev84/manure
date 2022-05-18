@@ -41,6 +41,5 @@ class ExcelImportManuresCommand extends Command
     {
         $filePath = public_path().'/imports/manures.xlsx';
         Excel::import(new ManuresImport(), $filePath);
-        $this->info('Imported successful!');
     }
 }
