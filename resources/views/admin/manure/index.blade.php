@@ -10,7 +10,9 @@
             <div class="ml-5">
                 <form action="{{ route('admin.manures_import') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="file" name="files">
+                    <input type="file" name="manure_file" accept=".xlsx,.xls" required>
+
+                    <!-- Если файл не выбран, всё равно показывается "Данные импортируются -->
                     <button type="submit" class="btn btn-success"
                             onclick="document.querySelector('.status').innerHTML = 'Данные импортируются...'">Загрузить
                         Excel-файл с удобрениями
@@ -25,6 +27,18 @@
         </div>
         <div>
             <div class="status">{{ session('status') }}</div>
+
+            <div>
+                @if($errors->any())
+                    <h5 style="color:red">Errors:</h5>
+                    <ol>
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ol>
+                @endif
+            </div>
+
         </div>
     </div>
 
