@@ -25,11 +25,11 @@ class StoreRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'norm_nitrogen' => 'required|numeric',
-            'norm_phosphorus' => 'required|numeric',
-            'norm_potassium' => 'required|numeric',
+            'norm_nitrogen' => 'required|numeric|gt:0',
+            'norm_phosphorus' => 'required|numeric|gt:0',
+            'norm_potassium' => 'required|numeric|gt:0',
             'district' => 'required|string',
-            'price' => 'required|string',
+            'price' => 'required|numeric|gt:0',
             'description' => 'required|string',
             'purpose' => 'required|string',
             'culture_id' => ''

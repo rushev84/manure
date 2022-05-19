@@ -35,8 +35,8 @@ class FilterRequest extends FormRequest
             'norm_potassium_from' => 'nullable',
             'norm_potassium_to' => 'nullable',
 
-            'price_from' => 'nullable',
-            'price_to' => 'nullable',
+            'price_from' => 'nullable|numeric|gt:0',
+            'price_to' => 'nullable|numeric|gt:0',
 
             'district' => 'nullable',
             'description' => 'nullable',
