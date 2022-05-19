@@ -7,6 +7,7 @@ use App\Http\Filters\ManureFilter;
 use App\Http\Requests\Admin\Manure\FilterRequest;
 use App\Models\Culture;
 use App\Models\Manure;
+use App\Models\ManuresImportStatus;
 
 class IndexController extends BaseController
 {

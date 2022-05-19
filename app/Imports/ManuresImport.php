@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Manure;
+use App\Models\ManuresImportStatus;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\SkipsErrors;
@@ -20,7 +21,6 @@ class ManuresImport implements ToCollection, WithHeadingRow, SkipsOnError, WithV
 
     public function collection(Collection $collection)
     {
-
         foreach ($collection as $row) {
             if ($row->filter()->isNotEmpty()) {
                 Manure::firstOrCreate([
@@ -82,6 +82,13 @@ class ManuresImport implements ToCollection, WithHeadingRow, SkipsOnError, WithV
 
     public function onFailure(Failure ...$failures)
     {
+        ManuresImportStatus::create([
+            'status' => 'Ошибка во время импорта111',
+            'user_id' => 1
+        ]);
+
+        dd($failures);
+
         foreach ($failures as $failure) {
             dd($failure);
         }
