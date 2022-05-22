@@ -15,83 +15,54 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Validators\Failure;
 use Throwable;
 
-class ManuresImport implements ToCollection, WithHeadingRow, SkipsOnError, WithValidation, SkipsOnFailure
+class ManuresImport implements ToCollection, WithHeadingRow
 {
-    use Importable, SkipsErrors;
+    use Importable;
 
     public function collection(Collection $collection)
     {
+
+//dd($collection);
+
         foreach ($collection as $row) {
             if ($row->filter()->isNotEmpty()) {
                 Manure::firstOrCreate([
-                    'name' => $row['name'],
-                    'norm_nitrogen' => $row['norm_nitrogen'],
-                    'norm_phosphorus' => $row['norm_phosphorus'],
-                    'norm_potassium' => $row['norm_potassium'],
-                    'culture_id' => $row['culture_id'],
-                    'district' => $row['district'],
-                    'price' => $row['price'],
-                    'description' => $row['description'],
-                    'purpose' => $row['purpose']
+                    'name' => $row['nazvanie'],
+                    'norm_nitrogen' => $row['norma_azota'],
+                    'norm_phosphorus' => $row['norma_fosfora'],
+                    'norm_potassium' => $row['norma_kaliya'],
+                    'culture_id' => $row['id_kultury'],
+                    'district' => $row['raion'],
+                    'price' => $row['cena'],
+                    'description' => $row['opisanie'],
+                    'purpose' => $row['naznacenie']
                 ]);
             }
         }
-
-//        foreach ($collection as $row) {
-//            if ($row[0] == 'Название') {
-//                continue;
-//            };
-//            if ($row->filter()->isNotEmpty()) {
-//                Manure::firstOrCreate([
-//                    'name' => $row[0],
-//                    'norm_nitrogen' => $row[1],
-//                    'norm_phosphorus' => $row[2],
-//                    'norm_potassium' => $row[3],
-//                    'culture_id' => $row[4],
-//                    'district' => $row[5],
-//                    'price' => $row[6],
-//                    'description' => $row[7],
-//                    'purpose' => $row[8]
-//                ]);
-//            }
-//        }
-//    }
-
     }
+//        dd('final');
 
+
+//    public function onFailure(Failure ...$failures)
+//    {
+////        dd($failures);
+////
+////        return redirect()->route('admin.manures_import_errors');
+//
+//    }
 
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'norm_nitrogen' => 'required|numeric|gt:0',
-            'norm_phosphorus' => 'required|numeric|gt:0',
-            'norm_potassium' => 'required|numeric|gt:0',
-            'district' => 'required|string',
-            'price' => 'required|numeric|gt:0',
-            'description' => 'required|string',
-            'purpose' => 'required|string',
-            'culture_id' => 'required'
+            'nazvanie' => 'required|string',
+            'norma_azota' => 'required|numeric|gt:0',
+            'norma_fosfora' => 'required|numeric|gt:0',
+            'norma_kaliya' => 'required|numeric|gt:0',
+            'id_kultury' => 'required',
+            'raion' => 'required|string',
+            'cena' => 'required|numeric|gt:0',
+            'opisanie' => 'required|string',
+            'naznacenie' => 'required|string',
         ];
-    }
-
-//    public function onError(Throwable $error)
-//    {
-//        dd($error);
-//    }
-
-    public function onFailure(Failure ...$failures)
-    {
-        ManuresImportStatus::create([
-            'status' => 'Ошибка во время импорта111',
-            'user_id' => 1
-        ]);
-
-        dd($failures);
-
-        foreach ($failures as $failure) {
-            dd($failure);
-        }
-
     }
 }
