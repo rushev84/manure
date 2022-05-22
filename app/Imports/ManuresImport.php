@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Validators\Failure;
 use Throwable;
 
-class ManuresImport implements ToCollection, WithHeadingRow
+class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
 {
     use Importable;
 
@@ -63,6 +63,13 @@ class ManuresImport implements ToCollection, WithHeadingRow
             'cena' => 'required|numeric|gt:0',
             'opisanie' => 'required|string',
             'naznacenie' => 'required|string',
+        ];
+    }
+
+    public function customValidationMessages()
+    {
+        return [
+            'nazvanie.required' => 'Отсутствует название',
         ];
     }
 }

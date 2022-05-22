@@ -30,12 +30,12 @@
 
             <div>
                 @if($errors->any())
-                    <h5 style="color:red">Errors:</h5>
-                    <ol>
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ol>
+                    {{--                    @dd($errors)--}}
+                    <h5 style="color:red">Ошибки в Excel-файле:</h5>
+                @dd($errors)
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}</div>
+                    @endforeach
                 @endif
             </div>
 

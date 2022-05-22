@@ -7,8 +7,8 @@
     <form action="{{ route('admin.manure.store') }}" method="post">
         @csrf
         <div class="form-group">
-            <label for="name">Название удобрения</label>
-            <input value="{{ old('name') }}" type="text" name="name" class="form-control" id="name" placeholder="Название удобрения">
+            <label for="name">Название</label>
+            <input value="{{ old('name') }}" type="text" name="name" class="form-control" id="name" placeholder="Название">
             @error('name')
             <p class="text-danger">{{ $message }}</p>
             @enderror
