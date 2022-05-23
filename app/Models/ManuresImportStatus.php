@@ -11,6 +11,4 @@ class ManuresImportStatus extends Model
 
     protected $table = 'manures_import_statuses';
     protected $guarded = false;
-
-
 }

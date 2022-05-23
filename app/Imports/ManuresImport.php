@@ -21,9 +21,6 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
 
     public function collection(Collection $collection)
     {
-
-//dd($collection);
-
         foreach ($collection as $row) {
             if ($row->filter()->isNotEmpty()) {
                 Manure::firstOrCreate([
@@ -39,9 +36,11 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
                 ]);
             }
         }
-    }
-//        dd('final');
 
+        ManuresImportStatus::latest()->first()->update([
+            'status' => 'Данные успешно импортированы',
+        ]);
+    }
 
 //    public function onFailure(Failure ...$failures)
 //    {
@@ -70,6 +69,18 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
     {
         return [
             'nazvanie.required' => 'Отсутствует название',
+            'norma_azota.required' => 'Отсутствует норма азота',
+            'norma_fosfora.required' => 'Отсутствует норма фосфора',
+            'norma_kaliya.required' => 'Отсутствует норма калия',
+            'id_kultury.required' => 'Отсутствует id культуры',
+            'raion.required' => 'Отсутствует район',
+            'cena.required' => 'Отсутствует цена',
+            'opisanie.required' => 'Отсутствует описание',
+            'naznacenie.required' => 'Отсутствует назначение',
+
+            'norma_azota.numeric' => 'Норма азота должна быть числом',
+            'norma_fosfora.numeric' => 'Норма фосфора должна быть числом',
+            'norma_kaliya.numeric' => 'Норма калия должна быть числом',
         ];
     }
 }

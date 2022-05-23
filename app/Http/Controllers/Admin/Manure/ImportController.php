@@ -22,6 +22,12 @@ class ImportController extends BaseController
         $filePath = public_path().'/imports/manures.xlsx';
 
         $import = new ManuresImport;
+
+        ManuresImportStatus::create([
+            'status' => 'Ошибка импорта',
+            'user_id' => auth()->user()->id
+        ]);
+
         $import->import($filePath);
 
         return back()->withStatus('Данные успешно импортированы!');

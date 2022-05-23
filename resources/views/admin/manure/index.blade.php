@@ -32,7 +32,7 @@
                 @if($errors->any())
                     {{--                    @dd($errors)--}}
                     <h5 style="color:red">Ошибки в Excel-файле:</h5>
-                @dd($errors)
+{{--                @dd($errors)--}}
                     @foreach($errors->all() as $error)
                         <div class="alert alert-danger">{{ $error }}</div>
                     @endforeach
