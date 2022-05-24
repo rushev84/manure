@@ -10,7 +10,12 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ImportController extends BaseController
 {
-    public function __invoke(Request $request)
+    public function ui()
+    {
+        return view('admin.manure.import_ui');
+    }
+
+    public function store(Request $request)
     {
         copy($request->file('manure_file'), public_path() . '/imports/manures.xlsx');
 
