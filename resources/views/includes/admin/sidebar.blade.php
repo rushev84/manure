@@ -3,19 +3,19 @@
         <li class="nav-header">УДОБРЕНИЯ</li>
         <li class="nav-item">
             <a href="{{ route('admin.manure.index') }}" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
-                <p>Список удобрений</p>
+                <i class="nav-icon fa fa-leaf" aria-hidden="true"></i>
+                <p>Все</p>
             </a>
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.manures_import.ui') }}" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+                <i class="nav-icon fa fa-arrows-alt" aria-hidden="true"></i>
                 <p>Импорт/экспорт</p>
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.manure.index') }}" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+            <a href="{{ route('admin.manures_import.status') }}" class="nav-link">
+                <i class="nav-icon fa fa-arrow-left" aria-hidden="true"></i>
                 <p>Статусы импортов</p>
             </a>
         </li>
@@ -23,7 +23,7 @@
 
         <li class="nav-item">
             <a href="{{ route('admin.culture.index') }}" class="nav-link">
-                <i class="nav-icon far fa-calendar-alt"></i>
+                <i class="nav-icon fa fa-list-alt" aria-hidden="true"></i>
                 <p>
                     Список культур
                 </p>
@@ -31,9 +31,13 @@
         </li>
 
         @can('view', auth()->user())
+
+            <li class="nav-header">КЛИЕНТЫ</li>
+
         <li class="nav-item">
             <a href="{{ route('admin.client.index') }}" class="nav-link">
-                <p>Клиенты</p>
+                <i class="nav-icon fa fa-address-card" aria-hidden="true"></i>
+                <p>Все</p>
             </a>
         </li>
         @endcan

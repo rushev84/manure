@@ -24,7 +24,7 @@ class ImportController extends BaseController
 //        $filePath = public_path().'/imports/manures.xlsx';
 //        Excel::import(new ManuresImport(), $filePath);
 
-        $filePath = public_path().'/imports/manures.xlsx';
+        $filePath = public_path() . '/imports/manures.xlsx';
 
         $import = new ManuresImport;
 
@@ -36,5 +36,12 @@ class ImportController extends BaseController
         $import->import($filePath);
 
         return back()->withStatus('Данные успешно импортированы!');
+    }
+
+    public function status()
+    {
+        $manuresImportStatuses = ManuresImportStatus::all();
+
+        return view('admin.manure.import_status', compact('manuresImportStatuses'));
     }
 }

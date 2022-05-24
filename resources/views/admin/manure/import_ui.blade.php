@@ -4,7 +4,7 @@
     <div>
 
         <div style="display: flex">
-            <div class="ml-5">
+            <div>
                 <form action="{{ route('admin.manures_import.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="file" name="manure_file" accept=".xlsx,.xls" required>
@@ -22,7 +22,7 @@
             </div>
 
         </div>
-        <div>
+        <div class="mt-3">
             <div class="status">{{ session('status') }}</div>
 
             <div>
