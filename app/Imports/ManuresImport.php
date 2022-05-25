@@ -21,34 +21,43 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
 
     public function collection(Collection $collection)
     {
-        foreach ($collection as $row) {
-            if ($row->filter()->isNotEmpty()) {
-                Manure::firstOrCreate([
-                    'name' => $row['nazvanie'],
-                    'norm_nitrogen' => $row['norma_azota'],
-                    'norm_phosphorus' => $row['norma_fosfora'],
-                    'norm_potassium' => $row['norma_kaliya'],
-                    'culture_id' => $row['id_kultury'],
-                    'district' => $row['raion'],
-                    'price' => $row['cena'],
-                    'description' => $row['opisanie'],
-                    'purpose' => $row['naznacenie']
-                ]);
+
+        try {
+            foreach ($collection as $row) {
+                if ($row->filter()->isNotEmpty()) {
+                    Manure::firstOrCreate([
+                        'name' => $row['nazvanie'],
+                        'norm_nitrogen' => $row['norma_azota'],
+                        'norm_phosphorus' => $row['norma_fosfora'],
+                        'norm_potassium' => $row['norma_kaliya'],
+                        'culture_id' => $row['id_kultury'],
+                        'district' => $row['raion'],
+                        'price' => $row['cena'],
+                        'description' => $row['opisanie'],
+                        'purpose' => $row['naznacenie']
+                    ]);
+                }
             }
+
+            // возможно, тут вообще не нужен try/catch
+
+        } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+//            $failures = $e->failures();
+//
+//            dd($failures);
+//
+//            foreach ($failures as $failure) {
+//                $failure->row(); // row that went wrong
+//                $failure->attribute(); // either heading key (if using heading row concern) or column index
+//                $failure->errors(); // Actual error messages from Laravel validator
+//                $failure->values(); // The values of the row that has failed.
+//            }
         }
 
         ManuresImportStatus::latest()->first()->update([
             'status' => 'Данные успешно импортированы',
         ]);
     }
-
-//    public function onFailure(Failure ...$failures)
-//    {
-////        dd($failures);
-////
-////        return redirect()->route('admin.manures_import_errors');
-//
-//    }
 
     public function rules(): array
     {
@@ -83,4 +92,9 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
             'norma_kaliya.numeric' => 'Норма калия должна быть числом',
         ];
     }
+
+//    public function onFailure(Failure ...$failures)
+//    {
+//        dd($failures);
+//    }
 }

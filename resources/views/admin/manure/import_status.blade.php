@@ -15,8 +15,8 @@
             @foreach($manuresImportStatuses as $status)
 
                 <tr class="{{ $status->status === 'Данные успешно импортированы' ? 'table-success' : 'table-danger' }}">
-                    <td>{{ $status->status }}</td>
-                    <td>{{ $status->user_id }}</td>
+                    <td style="width:300px;">{{ $status->status }}</td style="width:300px;">
+                    <td style="width:200px;">{{ $status->user_id }}</td>
                     <td>{{ $status->created_at }}</td>
                 </tr>
 
