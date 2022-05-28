@@ -1,10 +1,9 @@
 @extends('layouts.admin')
 
 @section('content')
-
-    <div class="mb-3">
-        <a href="{{ route('admin.client.create') }}" class="btn btn-primary">Добавить клиента</a>
-    </div>
+        <div class="mb-3">
+            <a href="{{ route('admin.client.create') }}" class="btn btn-primary">Добавить клиента</a>
+        </div>
 
     <div id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -121,6 +120,11 @@
                                 <input type="submit" value="Удалить" class="btn btn-danger">
                             </form>
                         </div>
+
+                        <div class="mb-3 ml-3">
+                            <a href="{{ url('/admin/clients/word_export/' . $client->id) }}" class="btn btn-primary">Скачать справку Word</a>
+                        </div>
+
                     </div>
 
                 </td>

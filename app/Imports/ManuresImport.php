@@ -15,7 +15,7 @@ use Maatwebsite\Excel\Concerns\WithValidation;
 use Maatwebsite\Excel\Validators\Failure;
 use Throwable;
 
-class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
+class ManuresImport implements ToCollection, WithHeadingRow, WithValidation, SkipsOnFailure
 {
     use Importable;
 
@@ -93,8 +93,9 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation
         ];
     }
 
-//    public function onFailure(Failure ...$failures)
-//    {
-//        dd($failures);
-//    }
+    public function onFailure(Failure ...$failures)
+    {
+        dd($failures);
+//        ManuresImportStatus::create(['status' => 'fail', 'user_id' => 1]);
+    }
 }

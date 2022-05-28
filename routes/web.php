@@ -55,6 +55,8 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
 
         Route::get('/clients_soft_deleted', 'SoftDeletedController')->name('admin.clients_soft_deleted');
 
+        Route::get('/clients/word_export/{client}', 'WordExportController');
+
 
     });
 
