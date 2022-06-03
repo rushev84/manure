@@ -39,9 +39,12 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation, Ski
                 }
             }
 
+//            dd('try');
             // возможно, тут вообще не нужен try/catch
 
         } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+
+            dd('catch');
 //            $failures = $e->failures();
 //
 //            dd($failures);
@@ -54,9 +57,9 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation, Ski
 //            }
         }
 
-        ManuresImportStatus::latest()->first()->update([
-            'status' => 'Данные успешно импортированы',
-        ]);
+//        dd(1);
+
+
     }
 
     public function rules(): array
@@ -95,7 +98,13 @@ class ManuresImport implements ToCollection, WithHeadingRow, WithValidation, Ski
 
     public function onFailure(Failure ...$failures)
     {
-        dd($failures);
-//        ManuresImportStatus::create(['status' => 'fail', 'user_id' => 1]);
+//        dd('fail');
+//        dd($failures);
+//        dd(ManuresImportStatus::find(1));
+
+        ManuresImportStatus::latest()->first()->update([
+            'status' => 'Ошибка импорта',
+        ]);
+
     }
 }

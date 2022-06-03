@@ -19,15 +19,11 @@ class ImportController extends BaseController
     {
         copy($request->file('manure_file'), public_path() . '/imports/manures.xlsx');
 
-//        ManuresImportJob::dispatchNow();
-
-//        $filePath = public_path().'/imports/manures.xlsx';
-//        Excel::import(new ManuresImport(), $filePath);
-
         $filePath = public_path() . '/imports/manures.xlsx';
 
         $import = new ManuresImport;
 
+        // или тут ставить сообщение "данные импортируются"?
         ManuresImportStatus::create([
             'status' => 'Ошибка импорта',
             'user_id' => auth()->user()->id
@@ -35,7 +31,13 @@ class ImportController extends BaseController
 
         $import->import($filePath);
 
-        return back()->withStatus('Данные успешно импортированы!');
+//        dd('import done');
+
+        ManuresImportStatus::latest()->first()->update([
+            'status' => 'Данные успешно импортированы',
+        ]);
+
+        return back()->withStatus('Готово!');
     }
 
     public function status()
